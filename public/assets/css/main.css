@@ -1,0 +1,26 @@
+.rightside .fa-search {
+  position: absolute;
+  margin-top: 5px;
+  right: 20px;
+  cursor: pointer;
+}
+.postWrap {
+  display: inline-block;
+  border: 1px solid #DDD;
+  padding: 7px;
+  margin-top: 10px;
+}
+.postWrap .title {
+  font-weight: normal;
+  font-size: medium;
+}
+.postWrap .info {
+  font-size: small;
+  color: #3f3f3f;
+}
+.postWrap .postOrder {
+  font-size: large;
+  color: #3f3f3f;
+  font-weight: bold;
+  margin-top: 28px;
+}
