@@ -5,13 +5,14 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Post extends Eloquent implements UserInterface, RemindableInterface {
+class Point extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
-	    public function point()
-    {
-        return $this->hasMany('point');
-    }
+
+public function sameId()
+{
+    return $this->whereRows('postid');
+}
 
 }

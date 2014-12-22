@@ -24,3 +24,12 @@
   font-weight: bold;
   margin-top: 28px;
 }
+.postWrap .pointer {
+  text-align: center;
+}
+.postWrap .pointer:first-child {
+  color: blue;
+}
+.postWrap .pointer:last-child {
+  color: red;
+}

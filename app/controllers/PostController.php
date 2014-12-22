@@ -9,9 +9,24 @@ class PostController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();
+		$posts = Post::orderBy('postpoint','desc')->get();
+		return json_decode($posts);
+	}
 
-		return Response::json(array('name'=>'post1','content'=>'içerik'));
+	public function PostSearch($key){
+		$post = Post::where('subject','like',"%{$key}%")->orderBy('postpoint','desc')->get();
+		return json_decode($post);
+	}
+
+	public function GetPoints($id){
+		$array = array();
+
+		$pointGood = Point::where('post_id','=',"{$id}")->where('isitok','=', 1)->count();
+		$pointBad = Point::where('post_id','=',"{$id}")->where('isitok','=', 0)->count();
+		$array = array_add($array, 'good', $pointGood);
+		$array = array_add($array, 'bad', $pointBad);
+
+		return $array;
 	}
 
 
@@ -61,7 +76,7 @@ class PostController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$post = Post::find($id)->get();
+		$post = Post::find($id);
 		return $post;
 	}
 

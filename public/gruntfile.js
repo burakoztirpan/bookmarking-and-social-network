@@ -6,7 +6,7 @@ module.exports = function (grunt) {
       livereload: true,
     },
     files: ['assets/*/*'],
-    tasks: ['less'],
+    tasks: ['less','uglify'],
   },
   less: {
   development: {
@@ -24,7 +24,7 @@ uglify: {
     },
     my_target: {
       files: {
-        'dest/output.min.js': ['src/input.js']
+        'assets/js/main.min.js': ['assets/js/devJs/*.js']
       }
     }
   }

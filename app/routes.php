@@ -30,6 +30,8 @@ Route::post('/loginuser','HomeController@loginUser');
 // {
 Route::resource('user', 'UserController');
 Route::resource('post', 'PostController');
+Route::get('search-result/{key}', 'PostController@PostSearch');
+Route::get('getpoints/{id}', 'PostController@GetPoints');
 Route::resource('comment', 'CommentController');
 Route::get('/logout', 'HomeController@logoutUser');
 // });
