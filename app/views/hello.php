@@ -47,7 +47,7 @@
 	</div>
 	<!-- /BODY -->
 	<!-- FOOTER -->
-	<a ui-sref="postList" title="">Post List</a>
+	<a ui-sref="postList({ postId: post.id })" title="">Post List</a>
 	<div class="row" ng-controller="postListCtrl">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		</div>

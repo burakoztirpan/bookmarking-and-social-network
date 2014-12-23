@@ -7,6 +7,6 @@ base.service("postFactory", function($resource) {
 base.controller('postCtrl',['$scope','$stateParams','postFactory',
 	function($scope,$stateParams,postFactory){
 		  postFactory.get({ id: $stateParams.postId }, function(data) {
-			$scope.post = data;		
+			$scope.post = data;
   	});
 }]);

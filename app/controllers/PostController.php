@@ -9,7 +9,12 @@ class PostController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::orderBy('postpoint','desc')->get();
+			$posts = Post::orderBy('postpoint','desc')->get();
+			return json_decode($posts);
+	}
+
+	public function getPage($page){
+		$posts = Post::orderBy('postpoint','desc')->skip(($page-1)*20)->take(20)->get();
 		return json_decode($posts);
 	}
 

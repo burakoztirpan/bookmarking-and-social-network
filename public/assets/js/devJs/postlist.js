@@ -5,36 +5,36 @@ base.service("postListFactory", function($resource) {
 });
 
 
-base.controller('postListCtrl', ['$scope','postListFactory','$http',
-	function ($scope, Posts,$http) {
-
+base.controller('postListCtrl', ['$scope','$state','postListFactory','$http',
+	function ($scope, $state, Posts,$http) {
 	Posts.query().$promise.then(function(data) {
-
-		var posts = data;
-
-		angular.forEach(posts, function(val, key) {
-			$http.get('/tatli/public/getpoints/'+val.id+'').
-        	success(function(data, status, headers, config) {
-				var post = [];
-				post.push(val.id);
-				post.push(val.subject);
-				post.push(val.content);
-				post.push(val.img);
-				post.push(val.postpoint);
-				post.push(val.created_at);
-				post.push(val.userid);
-				post.push(val.uptadet_at);
-				post.push(val.postpoint);
-				post.push(data.bad);
-				post.push(data.good);
-				posts.push(post);
-        	})
-		  
-		});
-
-		if(angular.isArray(data)){
-			$scope.postsm = posts;
-		}
+		$scope.posts = data;
+        $scope.getPage = 1;
+		$scope.page = function($page) {
+			$state.go('pagn',{page: $page});
+  		}
 
 		});
 }]);
+
+
+base.controller('getPage',['$scope','$state','$stateParams','$http',
+    function($scope,$state,$stateParams,$http){
+
+    	$scope.page = function($page) {
+			$state.go('pagn',{page: $page});
+  		}
+
+      if($stateParams){
+        $http.get('/tatli/public/page/'+$stateParams.page+'').
+        success(function(data, status, headers, config) {
+          $scope.posts = data;
+         // debugger; // Buradayım
+          $scope.getPage = parseInt((location.hash).split('/').slice(-1)[0])+1;
+        }).
+        error(function(data, status, headers, config) {
+          console.log(status)
+        });
+      }
+    }
+  ])

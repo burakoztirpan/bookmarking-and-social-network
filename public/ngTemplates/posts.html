@@ -1,11 +1,10 @@
-<div class="posts" ng-repeat="post in posts">
+<div class="posts" ng-repeat="post in posts track by $index">
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 postWrap">
 	<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 postOrder">
-		1
+		{{$index+1}}
 	</div>
 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-		<div class="pointer"><i class=""></i>1234</div>
-		<div class="pointer"><i class=""></i>1234</div>
+		<div class="pointer"><i class=""></i>{{post.postpoint}}</div>
 	</div>
 	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 post">
 		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -23,7 +22,10 @@
 				</div>
 				
 		</div>
-		
 	</div>
 </div>
+</div>
+<div class="pagination">
+<a ng-hide="getPage" ng-click="page(getPage-1)"  title="">prev</a>
+<a ng-click="page(parseInt(getPage)+1)" title="">next</a>
 </div>

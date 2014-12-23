@@ -16,11 +16,16 @@ base.config(function($stateProvider, $urlRouterProvider) {
 		controller: "postCtrl"
 	})
 	//Search
-	  //Post
 	.state('search', {
 		url: "result/:key",
 		templateUrl: "./ngTemplates/posts.html",
 		controller: "getSearchResult"
+	})
+	//NextPage
+	.state('pagn', {
+		url: "page/:page",
+		templateUrl: "./ngTemplates/posts.html",
+		controller: "getPage"
 	})
 });
 
